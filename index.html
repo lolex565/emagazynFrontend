@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <link rel="apple-touch-icon" href="img/logo.png">
+        <meta name="theme-color" content="#85a314"/>
+        <meta name="description" content="strona dozarządzania magazynem">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <title>
+            PWA test
+        </title>
+        <link rel="manifest" href="/manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="fulscreen">
+        <script type="text/javascript" src="js/jwt-vanilla.js"></script>
+        <div class="container">
+            <h1 class="title">
+                Magazyn
+            </h1>
+            <h2 class="splash">
+                Zaloguj się
+            </h2>
+            <form id="login_form" action="" method="post">
+                <label for="login">Login:</label>
+                <input id="username" type="text" name="login" id="login" />
+                <br />
+                <label for="passwd">Hasło:</label>
+                <input id="password" type="password" name="passwd" id="passwd" />
+                <br />
+                <input type="button" class="buttons" onclick="getToken()" value="Zaloguj">
+                <input class="buttons" type="reset" value="Wyzeruj pola">
+            </form>
+            <a href="">Zapomniałeś hasła?</a>
+        </div>
+        <script type="text/javascript" src="js/main.js"></script>
+        <div id="result"></div>
+    </body>
+</html>
