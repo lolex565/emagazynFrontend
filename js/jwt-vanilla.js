@@ -1,6 +1,6 @@
     // make the request to the login endpoint
     function getToken() {
-      var loginUrl = "http://localhost:3000/login";
+      var loginUrl = "http://3.11.101.223:3000/user/auth/login";
       var xhr = new XMLHttpRequest();
       var userElement = document.getElementById('username');
       var passwordElement = document.getElementById('password');
@@ -8,7 +8,9 @@
       var password = passwordElement.value;
     
       xhr.open('POST', loginUrl, true);
-      xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+      xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+      xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://3.11.101.223:3000');
+      xhr.setRequestHeader('Access-Control-Allow-Methods', "GET, PUT, POST, DELETE, HEAD, OPTIONS");
       xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
       xhr.addEventListener('load', function() {
         var responseObject = JSON.parse(this.response);
@@ -31,11 +33,12 @@
     // make the request to the secret API endpoint
   function getSecret() {
   
-      var url = "http://localhost:3000/";
+      var url = "http://3.11.101.223:3000/";
       var xhr = new XMLHttpRequest();
       var tokenElement = localStorage.getItem('token');
       var resultElement = document.getElementById('result');
       xhr.open('GET', url, true);
+      xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://3.10.225.17:3000/');
       xhr.setRequestHeader("Authorization", "Bearer " + tokenElement);
       xhr.addEventListener('load', function() {
         var responseObject = JSON.parse(this.response);
