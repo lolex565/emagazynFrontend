@@ -7,11 +7,11 @@ function redirect() {
       xhr.setRequestHeader("Authorization", "Bearer " + tokenElement);
       xhr.addEventListener('load', function() {
         var responseObject = JSON.parse(this.response);
-        authSucces = responseObject.success;
+        var authSucces = responseObject.success;
+        if (authSucces) {
+          window.location = "landing.html"
+      }
       });
     
       xhr.send(null);
-      if (authSucces) {
-          window.location = "landing.html"
-      }
 }
