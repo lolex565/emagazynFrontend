@@ -33,6 +33,7 @@ function showMenu() {
             resultElement.innerHTML += '<input type=\"button\" value=\"magazyn\"></input>';
             break;
         default:
+            resultElement.innerHTML = "<h2> coś poszło nie tak 😅</h2>"
             break;
     }
 }
