@@ -1,4 +1,4 @@
-function redirect() {
+function redirectToLanding() {
     var url = "http://3.11.101.223:3000/";
     var xhr = new XMLHttpRequest();
     var tokenElement = localStorage.getItem('token');
@@ -14,4 +14,29 @@ function redirect() {
     });
     
       xhr.send(null);
+}
+
+function redirectToAdmin() {
+  var url = "pages/adminpanel.html";
+  window.location = url;
+}
+
+function redirectToStore() {
+  var url = "pages/store.html";
+  window.location = url;
+}
+
+function redirectToLibrary() {
+  var url = "pages/library.html";
+  window.location = url;
+}
+
+function redirectToArchive() {
+  var url = "pages/archive.html";
+  window.location = url;
+}
+
+function redirectToLogin() {
+  var url = "login.html";
+  window.location = url;
 }

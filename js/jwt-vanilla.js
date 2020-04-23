@@ -17,7 +17,7 @@
         console.log(responseObject);
         if (responseObject.token) {
           localStorage.setItem('token', responseObject.token);
-          redirect();
+          redirectToLanding();
         } else {
           localStorage.setItem('token', "No token received");
         }

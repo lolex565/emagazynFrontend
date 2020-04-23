@@ -18,10 +18,10 @@ function showMenu() {
     var resultElement = document.getElementById('menu');
     switch (localStorage.role) {
         case 'admin':
-            resultElement.innerHTML += '<input type=\"button\" value=\"admin panel\"></input>';
-            resultElement.innerHTML += '<input type=\"button\" value=\"magazyn\"></input>';
-            resultElement.innerHTML += '<input type=\"button\" value=\"archiwum\"></input>';
-            resultElement.innerHTML += '<input type=\"button\" value=\"biblioteczka\"></input>';
+            resultElement.innerHTML += '<input type=\"button\" value=\"admin panel\" onclick=\"redirectToAdmin()\"></input>';
+            resultElement.innerHTML += '<input type=\"button\" value=\"magazyn\" onclick=\"redirectToStore()\"></input>';
+            resultElement.innerHTML += '<input type=\"button\" value=\"archiwum\" onclick=\"redirectToArchive()\"></input>';
+            resultElement.innerHTML += '<input type=\"button\" value=\"biblioteczka\" onclick=\"redirectToLibrary()\"></input>';
             break;
         case 'archive':
             resultElement.innerHTML += '<input type=\"button\" value=\"archiwum\"></input>';
