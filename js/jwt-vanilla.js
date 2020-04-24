@@ -1,6 +1,6 @@
     // make the request to the login endpoint
     function getToken() {
-      var loginUrl = "http://3.11.101.223:3000/user/auth/login";
+      var loginUrl = "http://3.11.101.223:3001/user/auth/login";
       var xhr = new XMLHttpRequest();
       var userElement = document.getElementById('username');
       var passwordElement = document.getElementById('password');
@@ -9,7 +9,7 @@
     
       xhr.open('POST', loginUrl, true);
       xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
-      xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://3.11.101.223:3000');
+      xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://3.11.101.223:3001/');
       xhr.setRequestHeader('Access-Control-Allow-Methods', "GET, PUT, POST, DELETE, HEAD, OPTIONS");
       xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
       xhr.addEventListener('load', function() {
@@ -24,9 +24,6 @@
       });
     
       var sendObject = JSON.stringify({password: password, username: user});
-    
-      console.log('going to send', sendObject);
-    
       xhr.send(sendObject);
     }
   

@@ -61,3 +61,17 @@ input.buttons:hover{
     font-size: 4em;
     font-weight: 900;
 }
+
+#userlist{
+    text-align: center;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+#useraddform{
+    text-align: center;
+}
+
+#store{
+    text-align: center;
+}
