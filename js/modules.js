@@ -11,17 +11,23 @@ function getStoreItems() {
       if(xhr.readyState == 4){
           if(xhr.status == 200 || xhr.status == 304 || xhr.status == 203){
             var responseObject = JSON.parse(this.response);
+            console.log(responseObject.result.length);
             temp += "<ul>";
-            for (var i = 0; i < responseObject.length; i++) {
+            for (var i = 0; i < responseObject.result.length; i++) {
+                console.log("i am in loop")
                 temp += "<li><table class=\"storeTable\"><tr><td>ID:</td><td>Stare ID</td><td>Nazwa</td><td>Stan/Uwagi</td></tr><tr><td>";
-                temp += responseObject[i].storeId;
+                temp += responseObject.result[i].store_id;
                 temp += "</td><td>";
-                temp += responseObject[i].oldId;
+                temp += responseObject.result[i].oldId;
                 temp += "</td><td>";
-                temp += responseObject[i].name;
+                temp += responseObject.result[i].name;
                 temp += "</td><td>";
-                temp += responseObject[i].status;
+                temp += responseObject.result[i].status;
                 temp += "</td></tr></table></li>";
+              /*console.log(responseObject[i].store_id);
+              console.log(responseObject[i].oldId);
+              console.log(responseObject[i].name);
+              console.log(responseObject[i].status);*/
             }
             temp += "</ul>";
             resultElement.innerHTML = temp;
