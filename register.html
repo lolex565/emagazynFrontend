@@ -13,26 +13,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="fulscreen">
-        <script type="text/javascript" src="js/jwt-vanilla.js"></script>
-        <script type="text/javascript" src="js/redirect.js"></script>
         <div class="container">
             <h1 class="title">
                 E-Magazyn
             </h1>
             <h2 class="splash">
-                Wybierz który zasób chcesz przeglądać:
+                Zarejestruj się
             </h2>
-            <input type="button" onclick="redirectToStore()" value="magazyn"></input>
-            <input type="button" onclick="redirectToLibrary()" value="biblioteka"></input>
-            <input type="button" onclick="redirectToArchive()" value="archiwum"></input>
-            <br />
-            <h2 class="splash">
-                Lub zaloguj się aby zarządzać:
-            </h2>
-            <input type="button" onclick="redirectToLogin()" value="logowanie"></input>
-            <input type="button" onclick="redirectToRegister()" value="rejestracja"></input>
+            <form id="register_form" action="" method="post">
+                <label for="login">Email:</label>
+                <input id="username" type="text" name="login" id="login" />
+                <br />
+                <label for="passwd">Hasło:</label>
+                <input id="password" type="password" name="passwd" id="passwd" />
+                <br />
+                <input type="button" class="buttons" onclick="register()" value="zarejestruj">
+                <input class="buttons" type="reset" value="Wyzeruj pola">
+            </form>
         </div>
         <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/jwt-vanilla.js"></script>
         <script type="text/javascript" src="js/redirect.js"></script>
+        <script type="text/javascript" src="js/register.js"></script>
     </body>
 </html>

@@ -40,3 +40,8 @@ function redirectToLogin() {
   var url = "login.html";
   window.location = url;
 }
+
+function redirectToRegister() {
+  var url = "register.html";
+  window.location = url;
+}
