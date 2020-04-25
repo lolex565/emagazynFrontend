@@ -13,8 +13,8 @@ function getStoreItems() {
             var responseObject = JSON.parse(this.response);
             temp += "<ul>";
             for (var i = 0; i < responseObject.length; i++) {
-                temp += "<li><table><tr><td>ID:</td><td>Stare ID</td><td>Nazwa</td><td>Stan/Uwagi</td></tr><tr><td>";
-                temp += responseObject[i].id;
+                temp += "<li><table class=\"storeTable\"><tr><td>ID:</td><td>Stare ID</td><td>Nazwa</td><td>Stan/Uwagi</td></tr><tr><td>";
+                temp += responseObject[i].storeId;
                 temp += "</td><td>";
                 temp += responseObject[i].oldId;
                 temp += "</td><td>";
