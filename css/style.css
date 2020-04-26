@@ -8,6 +8,10 @@
     margin: 0;
 }
 
+td{
+    glyph-orientation-vertical: top;
+}
+
 html,
 .fullscreen{
     /*display: flex;*/
@@ -42,6 +46,11 @@ input.buttons:hover{
 
 .splash{
     font-size: 2em;
+}
+
+.storeButtons{
+    border: none;
+    border-radius: 0px;
 }
 
 #login_form{
