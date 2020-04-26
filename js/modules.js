@@ -53,5 +53,22 @@ function itemEdit() {
   var temp = getUrlVars();
   var editItemId = temp.storeId;
   console.log(editItemId);
-  document.getElementById('editItemId').innerHTML
+  document.getElementById('editItemId').innerHTML = editItemId;
+  var url = 'http://3.11.101.223:3001/storeItems/storeItem';
+  var xhr = new XMLHttpRequest();
+  var tokenElement = localStorage.token;
+  var temp = "";
+  xhr.open('GET', url, true);
+  xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://3.10.225.17:3001/storeItems/storeItem');
+  xhr.setRequestHeader("Authorization", "Bearer " + tokenElement);
+  xhr.onreadystatechange = function (aEvt) {
+    if(xhr.readyState == 4){
+        if(xhr.status == 200 || xhr.status == 304 || xhr.status == 203){
+          var responseObject = JSON.parse(this.response);
+          console.log(responseObject);
+        }
+    }
+  };
+  var sendObject = JSON.stringify({store_id: editItemId});
+  xhr.send(sendObject);
 }
