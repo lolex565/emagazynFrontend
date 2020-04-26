@@ -53,4 +53,5 @@ function itemEdit() {
   var temp = getUrlVars();
   var editItemId = temp.storeId;
   console.log(editItemId);
+  document.getElementById('editItemId').innerHTML
 }
