@@ -61,6 +61,7 @@ function itemEdit() {
   xhr.open('GET', url, true);
   xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://3.10.225.17:3001/storeItems/storeItem');
   xhr.setRequestHeader("Authorization", "Bearer " + tokenElement);
+  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
   xhr.onreadystatechange = function (aEvt) {
     if(xhr.readyState == 4){
         if(xhr.status == 200 || xhr.status == 304 || xhr.status == 203){
