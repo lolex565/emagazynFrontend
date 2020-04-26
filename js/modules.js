@@ -49,3 +49,7 @@ function goToStoreEdit(id) {
   var encodedUrl = encodeURI(editPageUrl);
   window.location = encodedUrl;
 }
+
+function itemEdit() {
+  console.log(getUrlVars());
+}
