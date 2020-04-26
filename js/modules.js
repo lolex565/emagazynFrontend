@@ -45,7 +45,7 @@ function getStoreItems() {
 }
 
 function goToStoreEdit(id) {
-  var editPageUrl = "http://3.11.101.223/earlyDev/storeedit.html?storeId="+id;
+  var editPageUrl = "http://3.11.101.223/earlyDev/pages/storeedit.html?storeId="+id;
   var encodedUrl = encodeURI(editPageUrl);
   window.location = encodedUrl;
 }
