@@ -46,10 +46,11 @@ function getStoreItems() {
 
 function goToStoreEdit(id) {
   var editPageUrl = "http://3.11.101.223/earlyDev/pages/storeedit.html?storeId="+id;
-  var encodedUrl = encodeURI(editPageUrl);
-  window.location = encodedUrl;
+  window.location = editPageUrl;
 }
 
 function itemEdit() {
-  console.log(getUrlVars());
+  var temp = getUrlVars();
+  var editItemId = temp.storeId;
+  console.log(editItemId);
 }
