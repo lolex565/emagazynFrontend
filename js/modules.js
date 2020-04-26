@@ -54,7 +54,7 @@ function itemEdit() {
   var editItemId = temp.storeId;
   console.log(editItemId);
   document.getElementById('editItemId').innerHTML = editItemId;
-  var url = 'http://3.11.101.223:3001/storeItems/storeItem';
+  var url = 'http://3.11.101.223:3001/storeItems/storeItem?id='+editItemId;
   var xhr = new XMLHttpRequest();
   var tokenElement = localStorage.token;
   var temp = "";
@@ -70,6 +70,5 @@ function itemEdit() {
         }
     }
   };
-  var sendObject = JSON.stringify({id: editItemId});
-  xhr.send(sendObject);
+  xhr.send(null);
 }
