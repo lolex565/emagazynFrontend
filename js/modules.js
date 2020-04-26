@@ -69,6 +69,6 @@ function itemEdit() {
         }
     }
   };
-  var sendObject = JSON.stringify({store_id: editItemId});
+  var sendObject = JSON.stringify({id: editItemId});
   xhr.send(sendObject);
 }
