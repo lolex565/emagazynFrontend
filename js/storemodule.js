@@ -65,9 +65,9 @@ function itemEdit() {
     if(xhr.readyState == 4){
         if(xhr.status == 200 || xhr.status == 304 || xhr.status == 203){
           var responseObject = JSON.parse(this.response);
-            document.getElementById('editItemOldId').innerHTML = responseObject.oldId;
-            document.getElementById('editItemName').innerHTML = responseObject.name;
-            document.getElementById('editItemStatus').innerHTML = responseObject.status;
+            document.getElementById('editItemOldId').defaultValue = responseObject.oldId;
+            document.getElementById('editItemName').defaultValue = responseObject.name;
+            document.getElementById('editItemStatus').defaultValue = responseObject.status;
         }
     }
   };
