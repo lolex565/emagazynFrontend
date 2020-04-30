@@ -52,7 +52,6 @@ function goToStoreEdit(id) {
 function itemEdit() {
   var temp = getUrlVars();
   var editItemId = temp.storeId;
-  console.log(editItemId);
   document.getElementById('editItemId').innerHTML = editItemId;
   var url = 'http://3.11.101.223:3001/storeItems/storeItem?id='+editItemId;
   var xhr = new XMLHttpRequest();
@@ -66,7 +65,9 @@ function itemEdit() {
     if(xhr.readyState == 4){
         if(xhr.status == 200 || xhr.status == 304 || xhr.status == 203){
           var responseObject = JSON.parse(this.response);
-          console.log(responseObject);
+            document.getElementById('editItemOldId').innerHTML = responseObject.oldId;
+            document.getElementById('editItemName').innerHTML = responseObject.name;
+            document.getElementById('editItemStatus').innerHTML = responseObject.status;
         }
     }
   };
