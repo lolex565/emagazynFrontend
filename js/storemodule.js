@@ -14,13 +14,13 @@ function getStoreItems() {
 
             }
             var responseObject = JSON.parse(this.response);
-            console.log(responseObject.result.length);
+            //console.log(responseObject.result.length);
             temp += "<ul>";
             for (var i = 0; i < responseObject.result.length; i++) {
-                console.log("i am in loop")
+                //console.log("i am in loop")
                 temp += "<li><table class=\"storeTable\"><tr><td>ID:</td><td>Stare ID</td><td>Nazwa</td><td>Stan/Uwagi</td>";
                 if (localStorage.role.includes("admin") || localStorage.role.includes("storage")) {
-                  temp += "<td rowspan=2><input class=\"storeButtons\" type=\"image\" src=\"../img/edit.png\" alt=\"edytuj\" onclick=\"goToStoreEdit("+responseObject.result[i].store_id+")\" /></td><td rowspan=2><input class=\"storeButtons\" type=\"image\" src=\"../img/delete.png\" alt=\"usuń\" /></td>"
+                  temp += "<td rowspan=2><input class=\"storeButtons\" type=\"image\" src=\"../img/edit.png\" alt=\"edytuj\" onclick=\"goToStoreEdit("+responseObject.result[i].store_id+")\" /></td><td rowspan=2><input class=\"storeButtons\" onclick=\"deleteItem("+responseObject.result[i].store_id+")\" type=\"image\" src=\"../img/delete.png\" alt=\"usuń\" /></td>"
                 }
                 temp += "</tr><tr><td>";
                 temp += responseObject.result[i].store_id;
@@ -49,7 +49,7 @@ function goToStoreEdit(id) {
   window.location = editPageUrl;
 }
 
-function itemEdit() {
+function itemEditForm() {
   var temp = getUrlVars();
   var editItemId = temp.storeId;
   document.getElementById('editItemId').innerHTML = editItemId;
@@ -72,4 +72,28 @@ function itemEdit() {
     }
   };
   xhr.send(null);
+}
+
+function editItemSend() {
+
+}
+
+function deleteItem(id) {
+  if (confirm("Czy na pewno chcesz usunąć:"+id+" ?")){
+    var url = 'http://3.11.101.223:3001/storeItems/storeItem?id='+editItemId;
+    var xhr = new XMLHttpRequest();
+    var tokenElement = localStorage.token;
+    xhr.open('DELETE', url, true);
+    xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://3.10.225.17:3001/storeItems/storeItem');
+    xhr.setRequestHeader("Authorization", "Bearer " + tokenElement);
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    xhr.onreadystatechange = function (aEvt) {
+      if(xhr.readyState == 4){
+          if(xhr.status == 200 || xhr.status == 304 || xhr.status == 203){
+            
+          }
+      }
+    };
+    xhr.send(null);
+  }
 }

@@ -44,8 +44,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td><input type="button" onclick="editItemSend()" value="zapisz edycje" /></td>
+                            <td><input type="button" onclick="redirectToStore()" value="powróć do listy" /></td>
                         </tr>
                     </table>
                 </form>
@@ -53,8 +53,9 @@
         </div>
         <script type="text/javascript" src="../js/jwt-decode.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
         <script type="text/javascript" src="../js/urlparams.js"></script>
         <script type="text/javascript" src="../js/storemodule.js"></script>
-        <script>window.onload = itemEdit();</script>
+        <script>window.onload = itemEditForm();</script>
     </body>
 </html>
