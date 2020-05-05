@@ -80,7 +80,7 @@ function editItemSend() {
 
 function deleteItem(id) {
   if (confirm("Czy na pewno chcesz usunąć:"+id+" ?")){
-    var url = 'http://3.11.101.223:3001/storeItems/storeItem?id='+editItemId;
+    var url = 'http://3.11.101.223:3001/storeItems/storeItem?id='+id;
     var xhr = new XMLHttpRequest();
     var tokenElement = localStorage.token;
     xhr.open('DELETE', url, true);
