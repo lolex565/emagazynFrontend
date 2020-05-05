@@ -17,31 +17,31 @@ function redirectToLanding() {
 }
 
 function redirectToAdmin() {
-  var url = "pages/adminpanel.html";
+  var url = "http://3.11.101.223/earlyDev/pages/adminpanel.html";
   window.location = url;
 }
 
 function redirectToStore() {
-  var url = "pages/store.html";
+  var url = "http://3.11.101.223/earlyDev/pages/store.html";
   window.location = url;
 }
 
 function redirectToLibrary() {
-  var url = "pages/library.html";
+  var url = "http://3.11.101.223/earlyDev/pages/library.html";
   window.location = url;
 }
 
 function redirectToArchive() {
-  var url = "pages/archive.html";
+  var url = "http://3.11.101.223/earlyDev/pages/archive.html";
   window.location = url;
 }
 
 function redirectToLogin() {
-  var url = "login.html";
+  var url = "http://3.11.101.223/earlyDev/login.html";
   window.location = url;
 }
 
 function redirectToRegister() {
-  var url = "register.html";
+  var url = "http://3.11.101.223/earlyDev/register.html";
   window.location = url;
 }
