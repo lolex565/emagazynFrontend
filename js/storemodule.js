@@ -90,7 +90,7 @@ function deleteItem(id) {
     xhr.onreadystatechange = function (aEvt) {
       if(xhr.readyState == 4){
           if(xhr.status == 200 || xhr.status == 304 || xhr.status == 203){
-            
+            location.reload()
           }
       }
     };
