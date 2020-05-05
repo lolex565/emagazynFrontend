@@ -1,6 +1,7 @@
 function getStoreItems() {
     var url = 'http://3.11.101.223:3001/storeItems';
     var resultElement = document.getElementById('store');
+    var addItemButton = document.getElementById('addItemButton');
     var xhr = new XMLHttpRequest();
     var tokenElement = localStorage.token;
     var temp = "";
@@ -21,6 +22,7 @@ function getStoreItems() {
                 temp += "<li><table class=\"storeTable\"><tr><td>ID:</td><td>Stare ID</td><td>Nazwa</td><td>Stan/Uwagi</td>";
                 if (localStorage.role.includes("admin") || localStorage.role.includes("storage")) {
                   temp += "<td rowspan=2><input class=\"storeButtons\" type=\"image\" src=\"../img/edit.png\" alt=\"edytuj\" onclick=\"goToStoreEdit("+responseObject.result[i].store_id+")\" /></td><td rowspan=2><input class=\"storeButtons\" onclick=\"deleteItem("+responseObject.result[i].store_id+")\" type=\"image\" src=\"../img/delete.png\" alt=\"usuń\" /></td>"
+                  addItemButton.innerHTML = "<input type=\"button\" value=\"dodaj przedmiot\" onclick=\"goToStoreAdd()\" />"
                 }
                 temp += "</tr><tr><td>";
                 temp += responseObject.result[i].store_id;
@@ -47,6 +49,11 @@ function getStoreItems() {
 function goToStoreEdit(id) {
   var editPageUrl = "http://3.11.101.223/earlyDev/pages/storeedit.html?storeId="+id;
   window.location = editPageUrl;
+}
+
+function goToStoreAdd() {
+  var url = "http://3.11.101.223/earlyDev/pages/storeadd.html";
+  window.location = url;
 }
 
 function itemEditForm() {
@@ -96,4 +103,30 @@ function deleteItem(id) {
     };
     xhr.send(null);
   }
+}
+
+function addItemSend() {
+  var url = "http://3.11.101.223:3001/storeItems/storeItem";
+  var xhr = new XMLHttpRequest();
+  var nameElement = document.getElementById('addItemName');
+  var statusElement = document.getElementById('addItemStatus');
+  var oldIdElement = document.getElementById('addItemOldId');
+  var tokenElement = localStorage.token;
+  var name = nameElement.value;
+  var status = statusElement.value;
+  var oldId = oldIdElement.value;
+
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+  xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://3.11.101.223:3001/storeItems/storeItem');
+  xhr.setRequestHeader('Access-Control-Allow-Methods', "GET, PUT, POST, DELETE, HEAD, OPTIONS");
+  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  xhr.setRequestHeader("Authorization", "Bearer " + tokenElement);
+  xhr.addEventListener('load', function() {
+    var responseObject = JSON.parse(this.response);
+    console.log(responseObject);
+  });
+
+  var sendObject = JSON.stringify({name: name, status: status, oldId: oldId});
+  xhr.send(sendObject);
 }

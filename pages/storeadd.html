@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <link rel="apple-touch-icon" href="../img/logo.png">
+        <meta name="theme-color" content="#85a314"/>
+        <meta name="description" content="strona dozarządzania magazynem">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>
+        	Magazyn
+        </title>
+        <link rel="manifest" href="../manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="fulscreen">
+        <div class="container">
+            <h1 class="title">
+                E-Magazyn <br /> Moduł Magazyn
+            </h1>
+            <div id="storeAdd">
+                <h2 id="itemId">Dodaj Przedmiot do magazynu</h2>
+                <form>
+                    <table>
+                        
+                        <tr>
+                            <td>Stare ID:</td>
+                            <td>
+                                <input type="text" id="addItemOldId" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nazwa:</td>
+                            <td>
+                                <input type="text" id="addItemName"  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Stan/Uwagi:</td>
+                            <td>
+                                <input type="text" id="addItemStatus"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="button" onclick="addItemSend()" value="zapisz przedmiot" /></td>
+                            <td><input type="button" onclick="redirectToStore()" value="powróć do listy" /></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/jwt-decode.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/urlparams.js"></script>
+        <script type="text/javascript" src="../js/storemodule.js"></script>
+        <!--<script>window.onload = itemAddForm();</script>-->
+    </body>
+</html>
