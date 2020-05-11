@@ -11,9 +11,6 @@ function getStoreItems() {
     xhr.onreadystatechange = function (aEvt) {
       if(xhr.readyState == 4){
           if(xhr.status == 200 || xhr.status == 304 || xhr.status == 203){
-            if (localStorage.role.includes("admin") || localStorage.role.includes("storage")) {
-
-            }
             var responseObject = JSON.parse(this.response);
             //console.log(responseObject.result.length);
             temp += "<ul>";
@@ -124,7 +121,10 @@ function addItemSend() {
   xhr.setRequestHeader("Authorization", "Bearer " + tokenElement);
   xhr.addEventListener('load', function() {
     var responseObject = JSON.parse(this.response);
-    console.log(responseObject);
+    if (responseObject.message == "StoreItem created"){
+      window.alert("utworzono przedmiot");
+      window.location("http://3.11.101.223/earlyDev/pages/store.html")
+    }
   });
 
   var sendObject = JSON.stringify({name: name, status: status, oldId: oldId});

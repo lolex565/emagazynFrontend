@@ -13,8 +13,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="fulscreen">
-        <script type="text/javascript" src="js/jwt-vanilla.js"></script>
-        <script type="text/javascript" src="js/redirect.js"></script>
         <div class="container">
             <h1 class="title">
                 E-Magazyn
@@ -32,7 +30,9 @@
             <input type="button" onclick="redirectToLogin()" value="logowanie" />
             <input type="button" onclick="redirectToRegister()" value="rejestracja" />
         </div>
+        <script type="text/javascript" src="js/jwt-vanilla.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/redirect.js"></script>
+        <script>window.onload = checkToken();</script>
     </body>
 </html>
