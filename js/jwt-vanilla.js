@@ -42,7 +42,7 @@ function checkToken(){
     xhr.addEventListener('load', function() {
       var responseObject = JSON.parse(this.response);
       if (responseObject.success == true){
-        window.location = redirectToLanding();
+        window.location = "http://3.11.101.223/earlyDev/landing";
       }
     });
   
