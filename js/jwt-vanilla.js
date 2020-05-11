@@ -29,7 +29,7 @@ function getToken() {
 
 
 function checkToken(){
-  if (localStorage.token != undefined) {
+  if (localStorage.hasOwnProperty('token') == true) {
     var token = localStorage.token;
     var authUrl = "http://3.11.101.223:3001/user/auth/authorize";
     var xhr = new XMLHttpRequest();
@@ -42,7 +42,8 @@ function checkToken(){
     xhr.addEventListener('load', function() {
       var responseObject = JSON.parse(this.response);
       if (responseObject.success == true){
-        window.location = "http://3.11.101.223/earlyDev/landing";
+        //console.log(responseObject);
+        window.location = "http://3.11.101.223/earlyDev/landing.html";
       }
     });
   
