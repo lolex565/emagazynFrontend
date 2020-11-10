@@ -4,8 +4,7 @@ var filesToCache = [
   '/index.html',
   '/css/style.css',
   '/js/main.js',
-  '/misc/museo500.otf',
-  '/js/jwt-vanilla.js'
+  '/misc/museo500.otf'
 ];
 
 /* Start the service worker and cache all of the app's content */

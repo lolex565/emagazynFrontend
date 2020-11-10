@@ -67,7 +67,6 @@ input.buttons:hover{
 
 #result{
     text-align: center;
-    font-size: 4em;
     font-weight: 900;
 }
 
@@ -83,4 +82,8 @@ input.buttons:hover{
 
 #store{
     text-align: center;
+}
+
+table {
+    margin:auto;
 }

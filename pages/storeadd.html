@@ -19,40 +19,37 @@
             </h1>
             <div id="storeAdd">
                 <h2 id="itemId">Dodaj Przedmiot do magazynu</h2>
-                <form>
+                <div id="result">
+                    
+                </div>
+                <form id ="storeForm">
                     <table>
-                        
                         <tr>
                             <td>Stare ID:</td>
                             <td>
-                                <input type="text" id="addItemOldId" />
+                                <input type="text" id="StoreOldId" />
                             </td>
                         </tr>
                         <tr>
                             <td>Nazwa:</td>
                             <td>
-                                <input type="text" id="addItemName"  />
+                                <input type="text" id="storeName"  />
                             </td>
                         </tr>
                         <tr>
                             <td>Stan/Uwagi:</td>
                             <td>
-                                <input type="text" id="addItemStatus"/>
+                                <input type="text" id="storeStatus"/>
                             </td>
-                        </tr>
-                        <tr>
-                            <td><input type="button" onclick="addItemSend()" value="zapisz przedmiot" /></td>
-                            <td><input type="button" onclick="redirectToStore()" value="powróć do listy" /></td>
                         </tr>
                     </table>
                 </form>
+                <td><input type="button" onclick="addItem('store')" value="zapisz przedmiot" /></td>
+                <td><a href="store.html"><input type="button" onclick="" value="powróć do listy" /></a></td> 
             </div>
         </div>
-        <script type="text/javascript" src="../js/jwt-decode.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
-        <script type="text/javascript" src="../js/redirect.js"></script>
-        <script type="text/javascript" src="../js/urlparams.js"></script>
-        <script type="text/javascript" src="../js/storemodule.js"></script>
-        <!--<script>window.onload = itemAddForm();</script>-->
+        <script type="text/javascript" src="../js/basicFunctions.js"></script>
+        <script type="text/javascript" src="../js/modular.js"></script>
     </body>
 </html>
