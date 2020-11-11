@@ -40,10 +40,20 @@ function parseForm(formId) {
     const elements = document.querySelectorAll('#' + formId + ' input');
     let temp = "{";
     for (var i = 0; i < elements.length; i++) {
-        temp += "\"" + elements[i].id + "\":\"" + elements[i].value + "\"";
+        temp += "\"" + elements[i].id + "\":\"" + elements[i].value + "\" ";
         if ((i + 1) < elements.length) temp += ", ";
     }
     temp += "}"
     let parsed = JSON.parse(temp);
     return parsed;
+};
+
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
 };

@@ -85,5 +85,12 @@ input.buttons:hover{
 }
 
 table {
-    margin:auto;
+    margin:1rem auto;
+    border-collapse: collapse;
+    /* border: 1px solid #000000; */
+}
+
+#resultTable td {
+    border: 2px solid #000000;
+    padding: 0.5rem;
 }

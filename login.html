@@ -12,9 +12,9 @@
         <link rel="manifest" href="/manifest.json">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <script type="text/javascript" src="js/basicFunctions.js"></script>
+    <script type="text/javascript" src="js/auth.js"></script>
     <body class="fulscreen">
-        <script type="text/javascript" src="js/jwt-vanilla.js"></script>
-        <script type="text/javascript" src="js/redirect.js"></script>
         <div class="container">
             <h1 class="title">
                 E-Magazyn
@@ -22,16 +22,16 @@
             <h2 class="splash">
                 Zaloguj się
             </h2>
-            <form id="login_form" action="" method="post">
-                <label for="login">Login:</label>
-                <input id="username" type="text" name="login" id="login" />
+            <div id="result"></div>
+            <form id="login" action="" method="post">
+                <label for="email">email:</label>
+                <input type="text" id="email" name="email"/>
                 <br />
-                <label for="passwd">Hasło:</label>
-                <input id="password" type="password" name="passwd" id="passwd" />
+                <label for="password">Hasło:</label>
+                <input id="password" type="password" name="password"/>
                 <br />
-                <input type="button" class="buttons" onclick="getToken()" value="Zaloguj">
-                <input class="buttons" type="reset" value="Wyzeruj pola">
             </form>
+            <input type="button" class="buttons" onclick="login()" value="Zaloguj">
             <a href="passwdforget.html">Zapomniałeś hasła?</a>
         </div>
         <script type="text/javascript" src="js/main.js"></script>

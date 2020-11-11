@@ -3,9 +3,17 @@ async function getItems(module) {
     const method = "GET";
     let response = await APIcall(url, method);
     if (response) {
+        const tableFields = { id:module+"Id", oldId:module+"OldId", name:module+"Name", status:module+"Status" };
+        let temp = "<table id=\"resultTable\"><tr><td><b>ID</b></td><td><b>Stare ID</b></td><td><b>Nazwa</b></td><td><b></b></td></tr>";
         for (i = 0; i < response.length; i++) {
-            document.getElementById(module).innerHTML += response[i].storeId +" "+ response[i].storeName+"<br/>";
+            /* temp += "<tr><td>"+response[i][tableFields.id]+"</td><td>"+response[i][tableFields.oldId]+"</td><td>"+response[i][tableFields.name]+"</td><td>"+response[i][tableFields.status]+"</td></tr>"; */
+            temp += "<tr><td>"+response[i][tableFields.id]+"</td><td>";
+            temp += response[i][tableFields.oldId] ? response[i][tableFields.oldId]+"</td><td>":"</td><td>";
+            temp += response[i][tableFields.name] +"</td><td>";
+            temp += response[i][tableFields.status] ? response[i][tableFields.status]+"</td></tr>":"</td></tr>";
         };
+        temp += "</table>";
+        document.getElementById(module).innerHTML = temp;
     } else {
         document.getElementById(module).innerHTML += "wystąpił jakiś błąd"
     };
@@ -21,6 +29,8 @@ async function addItem(module) {
     let response = await APIcall(url, method, formId);
     if (response.success == true) {
         document.getElementById("result").innerHTML = "<h2>Zapisano <inline style=\"color:red\">"+response.item+"</inline> w bazie danych</h2>";
+    } else if (response.error == "access denied") {
+        document.getElementById("result").innerHTML = "<h2>Nie masz dostępu</h2>";
     };
 };
 
@@ -59,6 +69,10 @@ async function editItem(module) {
     let response = await APIcall(url, method, formId);
     if (response.success == true) {
         document.getElementById("result").innerHTML = "<h2>Zmieniono <inline style=\"color:red\">"+response.item+"</inline> w bazie danych</h2>";
+    } else if (response.error == "access denied") {
+        document.getElementById("result").innerHTML = "<h2>Nie masz dostępu</h2>";
+    }else {
+        document.getElementById("result").innerHTML = "<h2>Nie było czego zmieniać</h2>";
     };
 };
 
@@ -71,5 +85,9 @@ async function deleteItem(module) {
     let data = "{\"confirmation\":" + (confirm("czy na pewno usunąć") ? true:false) + "}";
     let parsed = JSON.parse(data);
     let response = await APIcall(url,method,"", parsed);
-    document.getElementById("result").innerHTML = response.success ? "<h2>Pomyślnie usunięto <inline style=\"color:red\">"+temp+"</inline></h2>":"<h2>Nie usunięto <inline style=\"color:red\">"+temp+"</inline></h2>"
+    if (response.error == "access denied") {
+        document.getElementById("result").innerHTML = "<h2>Nie masz dostępu</h2>";
+    } else {
+        document.getElementById("result").innerHTML = response.success ? "<h2>Pomyślnie usunięto <inline style=\"color:red\">"+temp+"</inline></h2>":"<h2>Nie usunięto <inline style=\"color:red\">"+temp+"</inline></h2>";
+    };
 };

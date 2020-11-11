@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <link rel="apple-touch-icon" href="img/logo.png">
+    <meta name="theme-color" content="#85a314" />
+    <meta name="description" content="strona dozarządzania magazynem">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>
+        E-Magazyn
+    </title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script type="text/javascript" src="js/basicFunctions.js"></script>
+<script type="text/javascript" src="js/auth.js"></script>
+<body class="fulscreen">
+    <div class="container">
+        <h1 class="title">
+            E-Magazyn
+        </h1>
+        <h2 class="splash">
+            Zweryfikuj konto
+        </h2>
+        <div id="result">
+
+        </div>
+        <form id="verify">
+            <label for="verificationToken">Tu wklej token z emaila:</label>
+            <input type="text" id="verificationToken">
+        </form>
+        <input type="button" value="Potwierdź" onclick="verify()">
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

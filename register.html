@@ -12,6 +12,8 @@
         <link rel="manifest" href="/manifest.json">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <script type="text/javascript" src="js/basicFunctions.js"></script>
+    <script type="text/javascript" src="js/auth.js"></script>
     <body class="fulscreen">
         <div class="container">
             <h1 class="title">
@@ -20,20 +22,38 @@
             <h2 class="splash">
                 Zarejestruj się
             </h2>
-            <form id="register_form" action="" method="post">
-                <label for="login">Email:</label>
-                <input id="username" type="text" name="login" id="login" />
-                <br />
-                <label for="passwd">Hasło:</label>
-                <input id="password" type="password" name="passwd" id="passwd" />
-                <br />
-                <input type="button" class="buttons" onclick="register()" value="zarejestruj">
-                <input class="buttons" type="reset" value="Wyzeruj pola">
+            <div id="result"></div>
+            <form id="register" >
+                <table>
+                    <tr>
+                        <td>
+                            <label for="login">Imie i nazwisko:</label>
+                        </td>
+                        <td>
+                            <input id="name" type="text" name="name" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">Email:</label>
+                        </td>
+                        <td>
+                            <input id="email" type="text" name="login" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password">Hasło:</label>
+                        </td>
+                        <td>
+                            <input id="password" type="password" name="password" />
+                        </td>
+                    </tr>
+                </table>
             </form>
+            <input type="button" class="buttons" onclick="register()" value="zarejestruj">
+            <a href="/index.html"><input type="button" value="powrót do strony głównej"></a>
         </div>
         <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/jwt-vanilla.js"></script>
-        <script type="text/javascript" src="js/redirect.js"></script>
-        <script type="text/javascript" src="js/register.js"></script>
     </body>
 </html>
