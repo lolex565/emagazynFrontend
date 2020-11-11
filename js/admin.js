@@ -8,7 +8,7 @@ async function getUsers() {
             temp += "<tr><td>"+response[i].name+"</td><td>";
             temp += response[i].email+"</td><td>";
             temp += response[i].roles.admin ? "✔</td><td>":"❌</td><td>"
-            temp += response[i].roles.stor ? "✔</td><td>":"❌</td><td>"
+            temp += response[i].roles.store ? "✔</td><td>":"❌</td><td>"
             temp += response[i].roles.library ? "✔</td><td>":"❌</td><td>"
             temp += response[i].roles.archive ? "✔</td></tr>":"❌</td></tr>"
         };

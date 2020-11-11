@@ -4,7 +4,7 @@ async function getItems(module) {
     let response = await APIcall(url, method);
     if (response) {
         const tableFields = { id:module+"Id", oldId:module+"OldId", name:module+"Name", status:module+"Status" };
-        let temp = "<table id=\"resultTable\"><tr><td><b>ID</b></td><td><b>Stare ID</b></td><td><b>Nazwa</b></td><td><b></b></td></tr>";
+        let temp = "<table id=\"resultTable\"><tr><td><b>ID</b></td><td><b>Stare ID</b></td><td><b>Nazwa</b></td><td><b>Status</b></td></tr>";
         for (i = 0; i < response.length; i++) {
             /* temp += "<tr><td>"+response[i][tableFields.id]+"</td><td>"+response[i][tableFields.oldId]+"</td><td>"+response[i][tableFields.name]+"</td><td>"+response[i][tableFields.status]+"</td></tr>"; */
             temp += "<tr><td>"+response[i][tableFields.id]+"</td><td>";
