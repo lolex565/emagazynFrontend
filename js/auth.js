@@ -1,5 +1,5 @@
 async function login() {
-    const url = "https://api.emagazyn.gorlice.plauth/login";
+    const url = "https://api.emagazyn.gorlice.pl/auth/login";
     const method = "POST";
     let response = await APIcall(url, method, "login");
     if (response.data.token){
@@ -37,7 +37,7 @@ async function deleteAccount() {
     if (confirm("Czy napewno chcesz się usunąć konto?")) {
         const deldata = {confirmation:true};
         const method = "DELETE";
-        const url = "https://api.emagazyn.gorlice.pluser";
+        const url = "https://api.emagazyn.gorlice.pl/user";
         let response = await APIcall(url, method, "", deldata);
         if (response.success){
             alert("usunięto konto");
@@ -58,7 +58,7 @@ function logout() {
 };
 
 async function register() {
-    const url = "https://api.emagazyn.gorlice.plauth/register";
+    const url = "https://api.emagazyn.gorlice.pl/auth/register";
     const method = "POST";
     let response = await APIcall(url, method, "register");
     if (response.error) {
@@ -71,7 +71,7 @@ async function register() {
 async function verify() {
     const verificationToken = document.getElementById("verificationToken").value;
     const method = "GET";
-    const url = "https://api.emagazyn.gorlice.plverify/" + verificationToken;
+    const url = "https://api.emagazyn.gorlice.pl/verify/" + verificationToken;
     let response = await APIcall(url, method);
     if (response.success) {
         document.getElementById("result").innerHTML = "<h2>Pomyślnie zweryfikowano konto</h2>"

@@ -1,5 +1,5 @@
 async function getItems(module) {
-    const url = "https://api.emagazyn.gorlice.plpublic/"+module;
+    const url = "https://api.emagazyn.gorlice.pl/public/"+module;
     const method = "GET";
     let response = await APIcall(url, method);
     if (response) {
@@ -22,7 +22,7 @@ async function getItems(module) {
 
 
 async function addItem(module) {
-    const url = "https://api.emagazyn.gorlice.pl"+module+"/add";
+    const url = "https://api.emagazyn.gorlice.pl/"+module+"/add";
     const method = "POST";
     const formId = module+"Form";
     document.getElementById("result").innerHTML = "";
@@ -35,7 +35,7 @@ async function addItem(module) {
 };
 
 async function getItem(module, id) {
-    const url = "https://api.emagazyn.gorlice.plpublic/"+module+"/"+id;
+    const url = "https://api.emagazyn.gorlice.pl/public/"+module+"/"+id;
     const method = "GET";
     let response = await APIcall(url, method);
     return response;
@@ -62,7 +62,7 @@ async function fillForm(module) {
 
 async function editItem(module) {
     const id = document.getElementById("editId").value;
-    const url = "https://api.emagazyn.gorlice.pl"+module+"/edit/"+id;
+    const url = "https://api.emagazyn.gorlice.pl/"+module+"/edit/"+id;
     const method = "PATCH";
     const formId = module+"EditForm";
     document.getElementById("result").innerHTML = "";
@@ -80,7 +80,7 @@ async function deleteItem(module) {
     document.getElementById("result").innerHTML = "";
     temp = document.getElementById(module+"Name").value;
     const id = document.getElementById("editId").value;
-    const url = "https://api.emagazyn.gorlice.pl"+module+"/delete/"+id;
+    const url = "https://api.emagazyn.gorlice.pl/"+module+"/delete/"+id;
     const method = "DELETE";
     let data = "{\"confirmation\":" + (confirm("czy na pewno usunąć") ? true:false) + "}";
     let parsed = JSON.parse(data);
