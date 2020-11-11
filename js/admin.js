@@ -1,5 +1,5 @@
 async function getUsers() {
-    const url = "http://127.0.0.1:5000/admin";
+    const url = "https://api.emagazyn.gorlice.pladmin";
     const method = "GET";
     let response = await APIcall(url, method);
     if (response) {
@@ -20,7 +20,7 @@ async function getUsers() {
 };
 
 async function getUser(email) {
-    const url = "http://127.0.0.1:5000/admin/"+email;
+    const url = "https://api.emagazyn.gorlice.pladmin/"+email;
     const method = "GET";
     let response = await APIcall(url, method);
     return response;
@@ -59,7 +59,7 @@ async function parseRolesForm() {
 
 async function editUser() {
     const email = document.getElementById("editEmail").value;
-    const url = "http://127.0.0.1:5000/admin/edit/"+email;
+    const url = "https://api.emagazyn.gorlice.pladmin/edit/"+email;
     const method = "PATCH";
     document.getElementById("result").innerHTML = "";
     const data = await parseRolesForm();
@@ -85,7 +85,7 @@ async function deleteUser() {
     document.getElementById("result").innerHTML = "";
     temp = document.getElementById("editEmail").value;
     const email = document.getElementById("editEmail").value;
-    const url = "http://127.0.0.1:5000/admin/delete/"+email;
+    const url = "https://api.emagazyn.gorlice.pladmin/delete/"+email;
     const method = "DELETE";
     let data = "{\"confirmation\":" + (confirm("czy na pewno usunąć") ? true:false) + "}";
     let parsed = JSON.parse(data);
