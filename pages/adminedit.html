@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <link rel="apple-touch-icon" href="../img/logo.png">
+        <meta name="theme-color" content="#85a314"/>
+        <meta name="description" content="strona dozarządzania magazynem">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>
+        	Magazyn
+        </title>
+        <link rel="manifest" href="../manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <script type="text/javascript" src="../js/basicFunctions.js"></script>
+    <script type="text/javascript" src="../js/admin.js"></script>
+    <body class="fulscreen">
+        <div class="container">
+            <h1 class="title">
+                E-Magazyn <br /> Moduł Admin
+            </h1>
+            <div id="adminEdit">
+                <div id="result">
+
+                </div>
+                <h2 id="itemId">Edytujesz: <input type="text" id="editEmail" onchange="fillForm()"></h2>
+                <form id="adminEditForm">
+                    <table>
+                        <tr>
+                            <td>Admin:</td>
+                            <td>
+                                ✔<input id="adt" type="radio" name="admin" value="true"><br />
+                                ❌<input id="adf" type="radio" name="admin" value="false">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Magazyn:</td>
+                            <td>
+                                ✔<input id="stt" type="radio" name="store" value="true"><br />
+                                ❌<input id="stf" type="radio" name="store" value="false">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Biblioteka:</td>
+                            <td>
+                                ✔<input id="lit" type="radio" name="library" value="true"><br />
+                                ❌<input id="lif" type="radio" name="library" value="false">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Archiwum:</td>
+                            <td>
+                                ✔<input id="art" type="radio" name="archive" value="true"><br />
+                                ❌<input id="arf" type="radio" name="archive" value="false">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <table>
+                    <tr>
+                        <td><input type="button" onclick="fillForm()" value="odśwież formularz" /></td>
+                        <td><input type="button" onclick="editUser()" value="zapisz edycje" /></td>
+                        <td><input type="button" onclick="deleteUser()" value="usuń użytkownika" /></td>
+                        <td><a href="admin.html"><input type="button" onclick="" value="powróć do listy" /></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <link rel="apple-touch-icon" href="../img/logo.png">
+        <meta name="theme-color" content="#85a314"/>
+        <meta name="description" content="strona dozarządzania magazynem">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>
+        	Magazyn
+        </title>
+        <link rel="manifest" href="../manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <script type="text/javascript" src="../js/basicFunctions.js"></script>
+    <script type="text/javascript" src="../js/admin.js"></script>
+    <body class="fulscreen">
+        <div class="container">
+            <h1 class="title">
+                E-Magazyn <br /> Moduł Admin
+            </h1>
+            <a href="adminedit.html"><input type="button" value="edytuj uprawnienia użytkownika"></a>
+            <a href="../index.html"><input type="button" value="Strona Główna"></a>
+            <br />
+            <div id="admin">
+                
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script>window.onload = getUsers();</script>
+    </body>
+</html>

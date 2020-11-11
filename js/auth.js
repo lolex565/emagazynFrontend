@@ -26,6 +26,10 @@ async function login() {
 function loggedIn() {
     if (localStorage.token) {
         document.getElementById("accountManage").innerHTML = "<h2 class=\"splash\"> zarządzaj kontem</h2><input type=\"button\" value=\"Usuń konto\" onclick=\"deleteAccount()\"><input value=\"Wyloguj się\" type=\"button\" onclick=\"logout()\">"
+        let decoded = parseJwt(localStorage.token);
+        if (decoded.roles.admin) {
+            document.getElementById("buttons").innerHTML += "<a href=\"/pages/admin.html\"><input type=\"button\" value=\"Admin\"></a>";
+        }
     };
 };
 
