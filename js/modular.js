@@ -48,7 +48,6 @@ async function getItems(module) {
     const method = "GET";
     let response = await APIcall(url, method);
     if (response) {
-<<<<<<< HEAD
         let keys = Object.keys(response[0]);
         let temp = "<table id=\"resultTable\"><tr>";
         console.log(dictionary)
@@ -56,10 +55,6 @@ async function getItems(module) {
             temp += "<td>"+dictionary[key]+"</td>"
         });
         temp+="</tr>";
-=======
-        const tableFields = { id:module+"Id", oldId:module+"OldId", name:module+"Name", status:module+"Status" };
-        let temp = "<table id=\"resultTable\"><tr><td><b>ID</b></td><td><b>Stare ID</b></td><td><b>Nazwa</b></td><td><b>Status</b></td></tr>";
->>>>>>> 1ab687b62ef7fa4487ec195b97e594cd397367b8
         for (i = 0; i < response.length; i++) {
             temp+="<tr>";
             keys.forEach(key => {
