@@ -87,6 +87,7 @@ input.buttons:hover{
 table {
     margin:1rem auto;
     border-collapse: collapse;
+    width: auto;
     /* border: 1px solid #000000; */
 }
 

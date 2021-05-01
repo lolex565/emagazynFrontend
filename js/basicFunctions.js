@@ -40,8 +40,16 @@ function parseForm(formId) {
     const elements = document.querySelectorAll('#' + formId + ' input');
     let temp = "{";
     for (var i = 0; i < elements.length; i++) {
-        temp += "\"" + elements[i].id + "\":\"" + elements[i].value + "\" ";
-        if ((i + 1) < elements.length) temp += ", ";
+        if (elements[i].type == "radio") {
+            if (elements[i].checked){
+                temp += "\"" + elements[i].id + "\":\"" + elements[i].value + "\" ";
+                if ((i + 2) < elements.length) temp += ", ";
+            }
+            
+        } else {
+            temp += "\"" + elements[i].id + "\":\"" + elements[i].value + "\" ";
+            if ((i + 1) < elements.length) temp += ", ";
+        }
     }
     temp += "}"
     let parsed = JSON.parse(temp);

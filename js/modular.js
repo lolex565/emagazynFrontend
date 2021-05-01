@@ -1,18 +1,68 @@
+let dictionary = {
+    "public": "publiczny",
+    "storeId": "ID",
+    "storeOldId": "stary numer identyfikacyjny",
+    "storeName": "nazwa",
+    "storeStatus": "opis/uwagi",
+    "storeLocation": "miejsce składowania",
+    "storeValue": "wartość jednostkowa",
+    "storeAmount": "ilość",
+    "addedBy": "dodano przez",
+    "lastEditedBy": "ostatnio edytowano przez",
+    "libraryId": "ID",
+    "libraryOldId": "stary numer identyfikacyjny",
+    "libraryName": "tytuł",
+    "libraryStatus": "opis/uwagi",
+    "libraryGenre": "gatunek",
+    "libraryTarget": "przeznaczenie",
+    "libraryBorrowed": "wypożyczona",
+    "libraryBorrower": "osoba pożyczająca",
+    "libraryLocation": "miejsce przechowywania",
+    "ISBN": "ISBN",
+    "archiveId": "ID",
+    "archiveOldId": "stary numer identyfikacyjny",
+    "archiveName": "nazwa",
+    "yearOfCreation": "rok powstania",
+    "archiveStatus": "opis/uwagi",
+    "createdAt": "data utworzenia",
+    "updatedAt": "data ostatniej edycji",
+    "name": "imie i nazwisko",
+    "email": "email",
+    "date": "data rejestracji",
+    "roles": "uprawnienia",
+    "verified": "potwierdzona rejestracja",
+    "store": "magazynier",
+    "library": "bibliotekarz",
+    "archive": "archiwista",
+    "admin": "administrator"
+};
+
 async function getItems(module) {
-    const url = "https://api.emagazyn.gorlice.pl/public/"+module;
+    let url = "https://api.emagazyn.gorlice.pl/";
+    if (localStorage.token) {
+        url = url+module+"/get";
+    } else {
+        url = url+"public/"+module;
+    }
+    
     const method = "GET";
     let response = await APIcall(url, method);
     if (response) {
-        const tableFields = { id:module+"Id", oldId:module+"OldId", name:module+"Name", status:module+"Status" };
-        let temp = "<table id=\"resultTable\"><tr><td><b>ID</b></td><td><b>Stare ID</b></td><td><b>Nazwa</b></td><td><b></b></td></tr>";
+        let keys = Object.keys(response[0]);
+        let temp = "<table id=\"resultTable\"><tr>";
+        console.log(dictionary)
+        keys.forEach(key => {
+            temp += "<td>"+dictionary[key]+"</td>"
+        });
+        temp+="</tr>";
         for (i = 0; i < response.length; i++) {
-            /* temp += "<tr><td>"+response[i][tableFields.id]+"</td><td>"+response[i][tableFields.oldId]+"</td><td>"+response[i][tableFields.name]+"</td><td>"+response[i][tableFields.status]+"</td></tr>"; */
-            temp += "<tr><td>"+response[i][tableFields.id]+"</td><td>";
-            temp += response[i][tableFields.oldId] ? response[i][tableFields.oldId]+"</td><td>":"</td><td>";
-            temp += response[i][tableFields.name] +"</td><td>";
-            temp += response[i][tableFields.status] ? response[i][tableFields.status]+"</td></tr>":"</td></tr>";
+            temp+="<tr>";
+            keys.forEach(key => {
+                temp+= "<td>"+response[i][key]+"</td>"
+            });
+            temp+="</tr>";
         };
-        temp += "</table>";
+        temp+="</table>"
         document.getElementById(module).innerHTML = temp;
     } else {
         document.getElementById(module).innerHTML += "wystąpił jakiś błąd"
@@ -35,7 +85,12 @@ async function addItem(module) {
 };
 
 async function getItem(module, id) {
-    const url = "https://api.emagazyn.gorlice.pl/public/"+module+"/"+id;
+    let url = "https://api.emagazyn.gorlice.pl/";
+    if (localStorage.token) {
+        url = url+module+"/get/"+id;
+    } else {
+        url = url+"public/"+module+"/"+id;
+    }
     const method = "GET";
     let response = await APIcall(url, method);
     return response;
@@ -48,15 +103,29 @@ async function fillForm(module) {
     const formFields = { oldId:module+"OldId", name:module+"Name", status:module+"Status" };
     document.getElementById("editId").value= id;
     const data = await getItem(module, id);
-    if (!data) {
+    if (!data[0]) {
         document.getElementById("result").innerHTML = "<h2>Nie mogę znaleźć przedmiotu o ID: "+id+"</h2>";
-        document.getElementById(formFields.oldId).value = "";
-        document.getElementById(formFields.name).value = "";
-        document.getElementById(formFields.status).value = "";
     } else {
-        document.getElementById(formFields.oldId).value = data[formFields.oldId] ? data[formFields.oldId] : "";
-        document.getElementById(formFields.name).value = data[formFields.name] ? data[formFields.name] : "";
-        document.getElementById(formFields.status).value = data[formFields.status] ? data[formFields.status] : "";
+        elements = document.querySelectorAll("#"+module+"EditForm input");
+        console.log(elements)
+        elements.forEach(element => {
+            if (element.type=="radio") {
+                if (data[0]["public"] == true) {
+                    if(element.value == "true") {
+                        element.checked = true
+                    }
+                } else {
+                    if(element.value == "false") {
+                        element.checked = true
+                    }
+                }
+            } else {
+                let name = element.id;
+                if (data[0][name] != undefined) {
+                    element.value = data[0][name]
+                }
+            }
+        });
     };
 };
 

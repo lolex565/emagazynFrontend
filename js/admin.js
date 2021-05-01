@@ -8,7 +8,7 @@ async function getUsers() {
             temp += "<tr><td>"+response[i].name+"</td><td>";
             temp += response[i].email+"</td><td>";
             temp += response[i].roles.admin ? "✔</td><td>":"❌</td><td>"
-            temp += response[i].roles.stor ? "✔</td><td>":"❌</td><td>"
+            temp += response[i].roles.store ? "✔</td><td>":"❌</td><td>"
             temp += response[i].roles.library ? "✔</td><td>":"❌</td><td>"
             temp += response[i].roles.archive ? "✔</td></tr>":"❌</td></tr>"
         };
@@ -71,13 +71,11 @@ async function editUser() {
         body: JSON.stringify(data),
         method: method
     };
-    let response = await fetch(url, params);
-    if (response.success == true) {
-        document.getElementById("result").innerHTML = "<h2>Zmieniono <inline style=\"color:red\">"+response.name+"</inline> w bazie danych</h2>";
+    let response = await (await fetch(url, params)).json();
+    if (response.success) {
+        document.getElementById("result").innerHTML = "<h2>Zmieniono <inline style=\"color:red\">"+response.user.name+"</inline> w bazie danych</h2>";
     } else if (response.error == "access denied") {
         document.getElementById("result").innerHTML = "<h2>Nie masz dostępu</h2>";
-    }else {
-        document.getElementById("result").innerHTML = "<h2>Nie było czego zmieniać</h2>";
     };
 };
 
