@@ -34,7 +34,11 @@ let dictionary = {
     "store": "magazynier",
     "library": "bibliotekarz",
     "archive": "archiwista",
-    "admin": "administrator"
+    "admin": "administrator",
+    "category": "kategoria",
+    "author": "autor",
+    "publisher": "wydawnictwo",
+    "year": "rok"
 };
 
 async function getItems(module) {
